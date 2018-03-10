@@ -1,0 +1,32 @@
+ld generated
+build/
+DerivedData/
+.DS_Store
+
+.svn
+
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+## Obj-C/Swift specific
+#*.hmap
+#*.ipa
+#*.dSYM.zip
+#*.dSYM
+
+#忽略Pods文件
+Pods/
+
+# Carthage
+Carthage/Build
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
