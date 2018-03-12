@@ -1,6 +1,14 @@
 $(function() {
 	//alert("灯塔插件初始化完成~");
-	getStart();
+	//getStart();
+	 
+     $(".w_btn_tab").append("<button id='button_start' style='position: absolute; display: inline-block;line-height: 35px;;margin-left: 40px; height: 35px; width: 98px; color: #fff; background: red;border-radius: 4px;cursor: pointer;'>开始答题</button>");
+
+	 $(".l_box").append("<div id='div_debug' style='text-align: center;'><div>");
+
+	 $('#button_start').on('click',function(){
+	 	getStart();
+	 }); 
 });
 
 function getStart() {
@@ -67,7 +75,7 @@ function getStart() {
 					$('.w_btn_tab_down').click();
 					getStart();
 				},
-				10);
+				3000);
 		}
 		
 	}
@@ -88,7 +96,8 @@ function searchAnswer(question, selections){
 	
 	if (res == null) {
 		//未匹配到答案
-		  console.log('未匹配到答案');		
+		  //console.log('未匹配到答案');
+		  $('#div_debug').text('未匹配到答案');
 			//return [];
 			return new Array();
 	}
@@ -97,6 +106,9 @@ function searchAnswer(question, selections){
 					 	
 	 	var str = res[0].trim();
 	 	console.log(str);
+
+	 	$('#div_debug').text(str);
+
 	 	var resultArray = str.split("\n"); //字符分割
 	 	console.log(resultArray); //["政治方向", "政治原则", "政治道路"]
  
@@ -1624,4 +1636,19 @@ var tikuString = `《党章》要求，党的各级领导干部要坚持党的�
 （）依然是当代中国的第一要务，中国执政者的首要使命就是集中力量提高人民生活水平，逐步实现共同富裕。
 发展
 ******************************
+在新的时代条件下，我们要进行伟大斗争、建设伟大工程、推进伟大事业、实现伟大梦想，仍然需要保持和发扬马克思主义政党与时俱进的理论品格，勇于推进实践基础上的（）。
+理论创新
+******************************
+中国特色社会主义不断取得的重大成就，意味着近代以来久经磨难的中华民族实现了从站起来、富起来到强起来的历史性飞跃，意味着社会主义在中国焕发出强大生机活力并不断开辟发展新境界，意味着中国特色社会主义拓展了发展中国家走向现代化的途径，为解决人类问题贡献了（）、提供了（）。
+中国智慧
+中国方案
+******************************
+《中共中央关于制定国民经济和社会发展第十三个五年规划的建议》把农村贫困人口脱贫作为全面建成小康社会的基本标志，强调实施精准扶贫、精准脱贫，以更大决心、更精准思路、更有力措施，采取超常举措，实施脱贫攻坚工程，确保我国现行标准下（）。
+农村贫困人口实现脱贫
+贫困县全部摘帽
+解决区域性整体贫困
+******************************
+******************************
+******************************
 `;
+
