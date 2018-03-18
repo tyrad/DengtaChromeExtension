@@ -91,7 +91,9 @@ function searchAnswer(question, selections){
 	
 	console.log('问题:' + question.trim());
 	
-	eval("var reg = /(?<=" + question.trim()  + ")[\\s\\S]*?(?=\\*{5})/g;"); 	
+	// eval("var reg = /(?<=" + question.trim()  + ")[\\s\\S]*?(?=\\*{5})/g;"); 	
+	//修复:  js正则不支持 ’<=‘， xp无法答题的问题
+	eval("var reg = /(?=" + question.trim()  + ")[\\s\\S]*?(?=\\*{5})/g;"); 	
 	var res = tikuString.match(reg);	
 	
 	if (res == null) {
