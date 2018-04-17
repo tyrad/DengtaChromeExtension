@@ -1,17 +1,30 @@
 $(function() {
+	
 	//alert("灯塔插件初始化完成~");
-	//getStart();
 	 
      $(".w_btn_tab").append("<button id='button_start' style='position: absolute; display: inline-block;line-height: 35px;;margin-left: 40px; height: 35px; width: 98px; color: #fff; background: red;border-radius: 4px;cursor: pointer;'>开始答题</button>");
 
 	 $(".l_box").append("<div id='div_debug' style='text-align: center;'><div>");
 
 	 $('#button_start').on('click',function(){
-	 	getStart();
+	 	
+	 	if (isStarted == false ) {   
+	 		 getStart()  
+	 	}else {
+	 	    needStop = true 
+	 	}
 	 }); 
 });
 
+var isStarted = false;
+var needStop = false;
+
 function getStart() {
+
+	isStarted = true;
+
+	$('#button_start').html('停止');
+
 	//获取`display != none`的元素, 取第一个
 	var targetLi = $("ul.W_ti_ul li:visible");
 	if(targetLi.length > 0) {
@@ -70,9 +83,16 @@ function getStart() {
 		//递归结束条件
 		if($('.w_btn_tab_down').hasClass('W_bgcol') && answerStrs.length != 0 ) {
 			
+			stopAnswering();
 			return;
 			
 		} else {
+
+			if (needStop) {
+				stopAnswering();
+				return;
+			};
+
 			setTimeout(function() {
 					$('.w_btn_tab_down').click();
 					getStart();
@@ -82,6 +102,13 @@ function getStart() {
 		
 	}
 }
+
+function stopAnswering(){
+	isStarted = false ;
+	needStop = false ;
+	$('#button_start').html('开始答题');
+}
+
 
 function searchAnswer(question, selections){
 	
