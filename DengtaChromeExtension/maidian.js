@@ -94,7 +94,7 @@ function getStart() {
 					$('.w_btn_tab_down').click();
 					getStart();
 				},
-			20);
+			2000);
 		}
 		
 	}
